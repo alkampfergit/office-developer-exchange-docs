@@ -222,6 +222,16 @@ If you registered your application in your own tenant using "Accounts in this or
 
 Once your Azure AD application is consented to by a tenant admin, the tenant admin must register your AAD application's service principal in Exchange via Exchange Online PowerShell. This is enabled by the [`New-ServicePrincipal` cmdlet](/powershell/module/exchange/new-serviceprincipal).
 
+To use New-ServicePrincipal you should install ExchangeOnlineManagement module and connect to your tenant
+
+```PowerShell
+Install-Module -Name ExchangeOnlineManagement -allowprerelease
+Import-module ExchangeOnlineManagement
+Connect-ExchangeOnline -Organization {tenantid}
+```
+
+After connecting to your tenant you should be able to run the New-ServicePrincipal cmdlet, if you still are not able to run it, it is possible that your user has no right in Exchange Online to perform the operation. If you do not have appropriate level of authorization, New-ServicePrincipal will not be available to use.
+
 The following is an example of registering an Azure AD application's service principal in Exchange:
 
 ```text
